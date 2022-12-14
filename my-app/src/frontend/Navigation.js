@@ -4,7 +4,7 @@ import useApi from '../backend/useApi.js';
 
 function Navigation(props) {
   const [activeItem, setActiveItem] = useState("/");
-  const menuItems = useApi();
+  const menuItems = props.menuItems;
 
   function editName(str) {
     //edits url string to get a menu item name. Removes "/" from first character and capitalizes
@@ -29,7 +29,7 @@ function Navigation(props) {
       {menuItems.map((item) => {
         if (item.url === '/') {
           return (
-            <Navbar.Brand href="/" key={item.id} onClick={() => handleClick(item.id)}>
+            <Navbar.Brand key={item.id} onClick={() => handleClick(item.id)}>
               <img
                 alt="Logo"
                 src="logo.png"
@@ -42,7 +42,7 @@ function Navigation(props) {
         } else {
           const name = item.url
           return (
-            <Nav.Link href={item.url} key={item.id} onClick={() => handleClick(item.id, item.url)}>{editName(name)}</Nav.Link>
+            <Nav.Link key={item.id} onClick={() => handleClick(item.id)}>{editName(name)}</Nav.Link>
           );
         }
       })}

@@ -6,12 +6,14 @@ import React, {useState} from 'react';
 
 
 function App() {
-  const [activeItem, setActiveItem] = useState("/");
+  const [activeId, setActiveId] = useState("/");
 
-  function handleMenuClick(item) {
-    setActiveItem(item);
-    console.log(item);
+  const apiPages = useApi();
+
+  function handleMenuClick(id) {
+    setActiveId(id);
   }
+
 
 
 // const navItems = useApi();
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation onMenuClick={handleMenuClick}/>
+      <Navigation onMenuClick={handleMenuClick} menuItems={apiPages} />
     </div>
   );
 }
