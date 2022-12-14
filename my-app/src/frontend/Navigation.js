@@ -3,13 +3,14 @@ import { Navbar, Nav } from 'react-bootstrap';
 import useApi from '../backend/useApi.js';
 
 function Navigation() {
+  const [activeItem, setActiveItem] = useState("home");
   const menuItems = useApi();
 
   function editName(str) {
     //edits url string to get a menu item name. Removes "/" from first character and capitalizes
     return str.substring(1, 2).toUpperCase() + str.substring(2);
   }
-  
+
   if (!menuItems) {
     return null
   }

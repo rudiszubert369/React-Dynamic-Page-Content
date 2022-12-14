@@ -2,8 +2,15 @@ import './App.css';
 import useApi from '../backend/useApi.js';
 import useApiPage from '../backend/useApiPages.js';
 import Navigation from './Navigation.js'
+import React, {useState} from 'react';
+
 
 function App() {
+  const [activeItem, setActiveItem] = useState("/");
+
+  function handleMenuClick(item) {
+    setActiveItem(item);
+  }
 
 
 // const navItems = useApi();
@@ -30,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation />
+      <Navigation onMenuClick={handleMenuClick}/>
     </div>
   );
 }
