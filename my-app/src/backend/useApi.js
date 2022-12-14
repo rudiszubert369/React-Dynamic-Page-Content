@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const useFetchData = () => {
+const useApi = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -8,8 +8,8 @@ const useFetchData = () => {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
-      }
-      // mode: 'no-cors'
+      },
+      mode: 'no-cors'
     })
     .then(response => response.text())
     .then(data => JSON.parse(data))
@@ -19,3 +19,5 @@ const useFetchData = () => {
   console.log(data)
   return data;
 };
+
+export default useApi

@@ -6,7 +6,7 @@ function App() {
 
 
 
-  const data = useFetchData();
+  // const data = useFetchData();
 
   return (
     <div className="App">
