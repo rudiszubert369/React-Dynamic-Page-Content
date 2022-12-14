@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+// import useApiPages from './useApiPages';
 
-const useApi = () => {
+const useApiPage = (id) => {
   const [data, setData] = useState(null);
-
+  const URL = 'https://adchitects-cms.herokuapp.com/page/' + id;
   useEffect(() => {
-    fetch('https://adchitects-cms.herokuapp.com/pages', {
+    fetch(URL, {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
@@ -13,10 +14,9 @@ const useApi = () => {
     .then(response => response.text())
     .then(data => JSON.parse(data))
     .then(data => setData(data));
-  }, []);
-
+  });
 
   return data;
 };
 
-export default useApi
+export default useApiPage
