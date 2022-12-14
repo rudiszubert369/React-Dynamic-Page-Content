@@ -1,32 +1,36 @@
 import './App.css';
 import useApi from '../backend/useApi.js';
-import useApiPage from '../backend/useApiPage.js';
+import useApiPage from '../backend/useApiPages.js';
+import Navigation from './Navigation.js'
 
 function App() {
 
 
-const navItems = useApi();
-console.log(navItems);
-// var pageNames = navItems.map(function(obj) {
-//   return obj.name;
-// });
+// const navItems = useApi();
+// console.log(navItems);
+// const pageUrls = navItems ? navItems.map(function(obj) {
+//   return obj.url;
+// }) : null;
 //
-// var pageIds = navItems.map(function(obj) {
+//
+// const pageIds = navItems ? navItems.map(function(obj) {
 //   return obj.id;
-// });
+// }) : null;
 
-// console.log(pageNames);
-// console.log(pageIds);
+// const pageContent = [];
+
+// if (pageIds) {
+//   pageIds.forEach((item) => {
+//     pageContent.push(useApiPages(item))
+//   });
+// }
 
 
   // const data = useFetchData();
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-
-      </header>
+      <Navigation />
     </div>
   );
 }
