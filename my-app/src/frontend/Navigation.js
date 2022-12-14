@@ -2,13 +2,18 @@ import React, {useState} from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import useApi from '../backend/useApi.js';
 
-function Navigation() {
-  const [activeItem, setActiveItem] = useState("home");
+function Navigation(props) {
+  const [activeItem, setActiveItem] = useState("/");
   const menuItems = useApi();
 
   function editName(str) {
     //edits url string to get a menu item name. Removes "/" from first character and capitalizes
     return str.substring(1, 2).toUpperCase() + str.substring(2);
+  }
+
+  function handleClick(id, url) {
+    setActiveItem(url);
+    props.onMenuClick(id);
   }
 
   if (!menuItems) {
@@ -24,7 +29,7 @@ function Navigation() {
       {menuItems.map((item) => {
         if (item.url === '/') {
           return (
-            <Navbar.Brand href="/" key={item.id}>
+            <Navbar.Brand href="/" key={item.id} onClick={() => handleClick(item.id)}>
               <img
                 alt="Logo"
                 src="logo.png"
@@ -37,7 +42,7 @@ function Navigation() {
         } else {
           const name = item.url
           return (
-            <Nav.Link href={item.url} key={item.id}>{editName(name)}</Nav.Link>
+            <Nav.Link href={item.url} key={item.id} onClick={() => handleClick(item.id, item.url)}>{editName(name)}</Nav.Link>
           );
         }
       })}

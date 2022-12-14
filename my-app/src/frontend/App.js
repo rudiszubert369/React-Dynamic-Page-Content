@@ -10,6 +10,7 @@ function App() {
 
   function handleMenuClick(item) {
     setActiveItem(item);
+    console.log(item);
   }
 
 
