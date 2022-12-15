@@ -1,38 +1,30 @@
-import './App.css';
-
-
-import { Form, Input } from 'react-bootstrap';
+import { usePostEmail } from '../backend/usePostEmail.js';
+import React from 'react';
 
 function Newsletter() {
+  const [response, error, postEmail] = usePostEmail(
+    'https://adchitects-cms.herokuapp.com/newsletter',
+    'adchitects',
+    'jsrulezzz'
+  );
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const { email } = event.target.elements;
+    postEmail({ email: email.value });
+  }
 
   return (
-    <div>
-      <p>ss</p>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Email:
+        <input name="email" type="email" />
+      </label>
+      <button type="submit">Submit</button>
+      {response && <p>{response.message}</p>}
+      {error && <p>Error: {error.message}</p>}
+    </form>
   );
 }
-export default Newsletter;
-//
-//
-// import './App.css';
-//
-//
-// import { Form, Input } from 'react-bootstrap';
-//
-// function Newsletter() {
-//   return (
-//     <Form>
-//       <Form.Group controlId="email">
-//         <Form.Label>Email address</Form.Label>
-//         <Input type="email" placeholder="Enter email" />
-//       </Form.Group>
-//       <Form.Group controlId="submit">
-//         <Form.Label>Submit</Form.Label>
-//         <Input type="submit" value="Subscribe" />
-//       </Form.Group>
-//     </Form>
-//   );
-// }
-//
-// export default Newsletter;
 
+export default Newsletter;

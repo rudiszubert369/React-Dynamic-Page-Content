@@ -20,5 +20,3 @@ const useApi = () => {
 };
 
 export default useApi
-
-//moze bez usefffec zadziala/

@@ -1,13 +1,13 @@
-import './App.css';
+import './Hero.css';
 
 function Hero(props) {
-  const { text, author } = props;
-
-  return (
-    <div>
-      <p>{text}</p>
-    </div>
-  );
-}
+  const { text, img } = props;
+    return (
+      <div>
+        <h3>{text}</h3>
+        <img src={img} alt="hero" />
+      </div>
+    );
+};
 
 export default Hero;
