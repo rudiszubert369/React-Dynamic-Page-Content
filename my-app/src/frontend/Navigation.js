@@ -21,7 +21,6 @@ function Navigation(props) {
   }
   // Spinner?
 
-
   return (
     <Navbar>
 

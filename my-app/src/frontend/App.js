@@ -1,25 +1,45 @@
 import './App.css';
 import useApi from '../backend/useApi.js';
-import useApiPage from '../backend/useApiPages.js';
 import Navigation from './Navigation.js'
 import React, {useState, useEffect} from 'react';
 
 
 function App() {
-  const [activeId, setActiveId] = useState("/");
+  const [activeId, setActiveId] = useState(null);
+  const [activeContent, setActiveContent] = useState(null);
 
   const apiPages = useApi();
 
+
+
   useEffect(() => {
     if (apiPages) {
-      const currentPage = apiPages.find(obj => obj.url === '/');
-      const currentId = currentPage.id;
-      setActiveId(currentId);
+      handleCurrentPageId();
     }
-  }, [])
+  }, [apiPages])
+
+  useEffect(() => {
+    if (activeId) {
+      fetch("https://adchitects-cms.herokuapp.com/page/" + activeId, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
+        }
+      })
+      .then(response => response.text())
+      .then(data => JSON.parse(data))
+      .then(data => setActiveContent(data));
+    }
+  }, [activeId])
 
   function handleMenuClick(id) {
     setActiveId(id);
+  }
+
+  function handleCurrentPageId() {
+    const url = window.location.pathname;
+    const matchedUrl = apiPages.find(item => item.url === url);
+    setActiveId(matchedUrl.id);
   }
 
 
@@ -27,31 +47,10 @@ function App() {
 
 
 
-// const navItems = useApi();
-// console.log(navItems);
-// const pageUrls = navItems ? navItems.map(function(obj) {
-//   return obj.url;
-// }) : null;
-//
-//
-// const pageIds = navItems ? navItems.map(function(obj) {
-//   return obj.id;
-// }) : null;
-
-// const pageContent = [];
-
-// if (pageIds) {
-//   pageIds.forEach((item) => {
-//     pageContent.push(useApiPages(item))
-//   });
-// }
-
-
-  // const data = useFetchData();
-
   return (
     <div className="App">
       <Navigation onMenuClick={handleMenuClick} menuItems={apiPages} />
+      <WebsiteSections sections={activeContent} />
     </div>
   );
 }
