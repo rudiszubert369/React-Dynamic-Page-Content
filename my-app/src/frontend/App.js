@@ -2,7 +2,7 @@ import './App.css';
 import useApi from '../backend/useApi.js';
 import useApiPage from '../backend/useApiPages.js';
 import Navigation from './Navigation.js'
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 function App() {
@@ -10,9 +10,20 @@ function App() {
 
   const apiPages = useApi();
 
+  useEffect(() => {
+    if (apiPages) {
+      const currentPage = apiPages.find(obj => obj.url === '/');
+      const currentId = currentPage.id;
+      setActiveId(currentId);
+    }
+  }, [])
+
   function handleMenuClick(id) {
     setActiveId(id);
   }
+
+
+
 
 
 
