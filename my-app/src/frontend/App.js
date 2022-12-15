@@ -1,6 +1,7 @@
 import './App.css';
 import useApi from '../backend/useApi.js';
 import Navigation from './Navigation.js'
+import WebsiteSections from './WebsiteSections.js';
 import React, {useState, useEffect} from 'react';
 
 
@@ -28,7 +29,7 @@ function App() {
       })
       .then(response => response.text())
       .then(data => JSON.parse(data))
-      .then(data => setActiveContent(data));
+      .then(data => setActiveContent(data.sections));
     }
   }, [activeId])
 

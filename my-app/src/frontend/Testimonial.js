@@ -1,6 +1,6 @@
 import './App.css';
 
-function Hero(props) {
+function Testimonial(props) {
   const { text, author } = props;
 
   return (
@@ -10,4 +10,4 @@ function Hero(props) {
   );
 }
 
-export default Hero;
+export default Testimonial;
