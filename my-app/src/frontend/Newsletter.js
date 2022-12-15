@@ -1,5 +1,8 @@
 import { usePostEmail } from '../backend/usePostEmail.js';
 import React from 'react';
+import './Newsletter.css';
+import Button from './Button.js'
+
 
 function Newsletter() {
   const [response, error, postEmail] = usePostEmail(
@@ -20,7 +23,7 @@ function Newsletter() {
         Email:
         <input name="email" type="email" />
       </label>
-      <button type="submit">Submit</button>
+      <Button type={"submit"}>Submit</Button>
       {response && <p>{response.message}</p>}
       {error && <p>Error: {error.message}</p>}
     </form>

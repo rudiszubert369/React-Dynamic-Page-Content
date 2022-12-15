@@ -1,4 +1,4 @@
-import './App.css';
+import './Testimonial.css';
 
 function Testimonial(props) {
   const { text, author } = props;

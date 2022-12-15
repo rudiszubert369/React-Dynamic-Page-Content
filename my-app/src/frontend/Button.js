@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import './Button.css'
 
-
-function App() {
-
-
-
-  // const data = useFetchData();
-
+const Button = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p></p>
-          Learn React
-      </header>
-    </div>
+    <button type={props.type}>
+      {props.children}
+    </button>
   );
-}
+};
 
-export default App;
+export default Button;
