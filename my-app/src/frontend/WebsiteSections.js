@@ -8,7 +8,7 @@ function WebsiteSections(props) {
 
   if (sections) {
     return (
-      <main className='container'>
+      <main>
         {sections.map(section => {
           if (section.type === 'hero') {
             return <Hero text={section.text} img={section.img} />;
