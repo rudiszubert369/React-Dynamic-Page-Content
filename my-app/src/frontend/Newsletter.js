@@ -1,6 +1,5 @@
 import { usePostEmail } from '../backend/usePostEmail.js';
 import React from 'react';
-import './Newsletter.css';
 import Button from './Button.js'
 
 
@@ -18,15 +17,17 @@ function Newsletter() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Email:
-        <input name="email" type="email" />
-      </label>
-      <Button type={"submit"}>Submit</Button>
-      {response && <p>{response.message}</p>}
-      {error && <p>Error: {error.message}</p>}
-    </form>
+    <section className='newsletter' aria-label='Sign up for our newsletter'>
+      <form onSubmit={handleSubmit} className='newsletter__form'>
+        <label>
+          Type your email
+          <input name='email' type='email' className='newsletter__input' />
+        </label>
+        <Button type='submit'>Submit</Button>
+        {response && <p>{response.message}</p>}
+        {error && <p>Error: {error.message}</p>}
+      </form>
+    </section>
   );
 }
 

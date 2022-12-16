@@ -4,7 +4,7 @@ const useApi = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("https://adchitects-cms.herokuapp.com/pages", {
+    fetch('https://adchitects-cms.herokuapp.com/pages', {
       method: 'GET',
       headers: {
         'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')

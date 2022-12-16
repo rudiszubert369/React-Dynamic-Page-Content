@@ -1,12 +1,11 @@
-import './Hero.css';
 
 function Hero(props) {
   const { text, img } = props;
     return (
-      <div>
-        <h3>{text}</h3>
-        <img src={img} alt="hero" />
-      </div>
+      <section className='hero' aria-label='Featured content'>
+        <h3 className='hero__title'>{text}</h3>
+        <img src={img} alt='hero' className='hero__img'/>
+      </section>
     );
 };
 

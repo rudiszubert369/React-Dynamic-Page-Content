@@ -1,4 +1,3 @@
-import './App.css';
 import useApi from '../backend/useApi.js';
 import Navigation from './Navigation.js'
 import WebsiteSections from './WebsiteSections.js';
@@ -21,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (activeId) {
-      fetch("https://adchitects-cms.herokuapp.com/page/" + activeId, {
+      fetch('https://adchitects-cms.herokuapp.com/page/' + activeId, {
         method: 'GET',
         headers: {
           'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
@@ -45,11 +44,8 @@ function App() {
 
 
 
-
-
-
   return (
-    <div className="App">
+    <div className='App'>
       <Navigation onMenuClick={handleMenuClick} menuItems={apiPages} />
       <WebsiteSections sections={activeContent} />
     </div>

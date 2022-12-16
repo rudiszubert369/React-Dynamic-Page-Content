@@ -1,8 +1,6 @@
-import './Button.css'
-
 const Button = (props) => {
   return (
-    <button type={props.type}>
+    <button className='button-main' type={props.type}>
       {props.children}
     </button>
   );
