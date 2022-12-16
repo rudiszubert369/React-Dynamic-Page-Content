@@ -1,7 +1,7 @@
+import {useState, useEffect} from 'react';
 import useApi from '../backend/useApi.js';
 import Navigation from './Navigation.js'
 import WebsiteSections from './WebsiteSections.js';
-import {useState, useEffect} from 'react';
 
 
 function App() {
@@ -17,24 +17,32 @@ function App() {
   }, [apiPages])
 
   useEffect(() => {
-    if (activeId) {
-      fetch('https://adchitects-cms.herokuapp.com/page/' + activeId, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
+    async function fetchData() {
+      try {
+        if (activeId) {
+          const response = await fetch('https://adchitects-cms.herokuapp.com/page/' + activeId, {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
+            }
+          });
+          const data = await response.text();
+          const parsedData = JSON.parse(data);
+          setActiveContent(parsedData.sections);
         }
-      })
-      .then(response => response.text())
-      .then(data => JSON.parse(data))
-      .then(data => setActiveContent(data.sections));
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }, [activeId])
+
+    fetchData();
+  }, [activeId]);
 
   function handleMenuClick(id) {
     setActiveId(id);
   }
 
-  function handleCurrentPageId() {
+  function handleCurrentPageId() { //matches url with pathname and sets active Id from api that corresponds to url
     const url = window.location.pathname;
     const matchedUrl = apiPages.find(item => item.url === url);
     setActiveId(matchedUrl.id);

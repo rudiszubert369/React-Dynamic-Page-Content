@@ -97,6 +97,20 @@ body {
 
 }
 
+@media screen and (max-width: 676px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero__text__column {
+    width: 100%;
+  }
+
+  .hero__title {
+    font-size: 30px;
+  }
+}
+
 .testimonial {
   background-color: #231E1E;
   padding-top: 100px;
@@ -115,6 +129,16 @@ body {
 .testimonial__caption {
   color: #989898;
   font-size: 24px;
+}
+
+@media screen and (max-width: 676px) {
+  .testimonial__quote {
+    font-size: 15px;
+  }
+
+  .testimonial__caption {
+    font-size: 12px;
+  }
 }
 
 .newsletter {
@@ -158,6 +182,20 @@ body {
 
 .newsletter__input:focus {
   outline: none;
+}
+
+@media screen and (max-width: 465px) {
+  .newsletter__form {
+    flex-direction: column;
+  }
+  .newsletter__input {
+    width: 90%;
+  }
+
+  .newsletter__form button {
+    margin: 0 auto;
+    margin-top: 15px;
+  }
 }
 
 button {

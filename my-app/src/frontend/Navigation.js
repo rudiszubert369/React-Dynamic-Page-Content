@@ -29,11 +29,10 @@ function Navigation(props) {
           {menuItems.map((item) => {
             if (item.url === '/') {
               return (
-                <li className='nav__logo'>
+                <li className='nav__logo' key={item.id}>
                   <a href='/'>
                     <img
                       onClick={() => handleClick(item.id)}
-                      key={item.id}
                       href='/'
                       alt='Logo'
                       src={logo}
@@ -45,8 +44,8 @@ function Navigation(props) {
               );
             } else {
               return (
-                <li className='nav__item'>
-                  <a key={item.id} href={item.url} onClick={() => handleClick(item.id)}>{transformName(item.url)}</a>
+                <li className='nav__item' key={item.id}>
+                  <a href={item.url} onClick={() => handleClick(item.id)}>{transformName(item.url)}</a>
                 </li>
               );
             }
