@@ -1,11 +1,8 @@
-import {useState} from 'react';
-import useApi from '../backend/useApi.js';
 import Button from './Button.js';
 import logo from '../assets/logo.svg';
 
 
 function Navigation(props) {
-  const [activeItem, setActiveItem] = useState('/');
   const menuItems = props.menuItems;
 
   function transformName(str) {
@@ -13,8 +10,7 @@ function Navigation(props) {
     return str.substring(1, 2).toUpperCase() + str.substring(2);
   }
 
-  function handleClick(id, url) {
-    setActiveItem(url);
+  function handleClick(id) {
     props.onMenuClick(id);
   }
 

@@ -11,11 +11,11 @@ function WebsiteSections(props) {
       <main>
         {sections.map(section => {
           if (section.type === 'hero') {
-            return <Hero text={section.text} img={section.img} />;
+            return <Hero key={section.type} text={section.text} img={section.img} />;
           } else if (section.type === 'newsletter') {
-            return <Newsletter />;
+            return <Newsletter key={section.type} />;
           } else if (section.type === 'testimonial') {
-            return <Testimonial text={section.text} author={section.author} />;
+            return <Testimonial key={section.type} text={section.text} author={section.author} />;
           } else {
             return null;
           }
