@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
+import fetchData from './fetchData.js'
 
 function useApi(){
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('https://adchitects-cms.herokuapp.com/pages', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Basic ' + btoa('adchitects:jsrulezzz')
-      }
-    })
-    .then(response => response.text())
-    .then(data => JSON.parse(data))
-    .then(data => setData(data));
+    async function fetchAndSetData() {
+      const fetchedData = await fetchData();
+      setData(fetchedData);
+    }
+
+    fetchAndSetData();
   }, []);
 
   return data;
