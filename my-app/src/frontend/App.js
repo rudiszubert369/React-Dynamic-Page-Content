@@ -1,7 +1,7 @@
 import useApi from '../backend/useApi.js';
 import Navigation from './Navigation.js'
 import WebsiteSections from './WebsiteSections.js';
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 
 function App() {
@@ -9,8 +9,6 @@ function App() {
   const [activeContent, setActiveContent] = useState(null);
 
   const apiPages = useApi();
-
-
 
   useEffect(() => {
     if (apiPages) {
@@ -41,8 +39,6 @@ function App() {
     const matchedUrl = apiPages.find(item => item.url === url);
     setActiveId(matchedUrl.id);
   }
-
-
 
   return (
     <div className='App'>

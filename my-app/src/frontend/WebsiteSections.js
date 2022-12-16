@@ -5,10 +5,10 @@ import Testimonial from './Testimonial.js'
 
 function WebsiteSections(props) {
   const sections = props.sections;
-  console.log(sections);
+
   if (sections) {
     return (
-      <div>
+      <main className='container'>
         {sections.map(section => {
           if (section.type === 'hero') {
             return <Hero text={section.text} img={section.img} />;
@@ -20,7 +20,7 @@ function WebsiteSections(props) {
             return null;
           }
         })}
-      </div>
+      </main>
     );
   }
 

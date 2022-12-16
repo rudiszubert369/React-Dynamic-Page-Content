@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useApi = () => {
+function useApi(){
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const useApi = () => {
     .then(data => JSON.parse(data))
     .then(data => setData(data));
   }, []);
-
 
   return data;
 };

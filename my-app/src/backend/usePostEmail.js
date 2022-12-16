@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState} from 'react'
 
 export function usePostEmail(url, username, password) {
   const [response, setResponse] = useState(null);
@@ -23,5 +23,3 @@ export function usePostEmail(url, username, password) {
 
   return [response, error, postEmail];
 }
-
-export default usePostEmail;

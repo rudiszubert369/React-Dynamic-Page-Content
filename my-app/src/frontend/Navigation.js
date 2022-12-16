@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import useApi from '../backend/useApi.js';
 import Button from './Button.js';
+import logo from '../assets/logo.svg';
 
 
 function Navigation(props) {
@@ -22,36 +23,38 @@ function Navigation(props) {
   }
 
   return (
-    <nav className='nav' aria-label='Main navigation menu'>
-      <ul>
-        {menuItems.map((item) => {
-          if (item.url === '/') {
-            return (
-              <li className='nav__logo'>
-                <a href='/'>
-                  <img
-                    onClick={() => handleClick(item.id)}
-                    key={item.id}
-                    href='/'
-                    alt='Logo'
-                    src='../../assets/logo.svg'
-                    width='30'
-                    height='30'
-                  />
-                </a>
-              </li>
-            );
-          } else {
-            return (
-              <li className='nav__item'>
-                <a key={item.id} href={item.url} onClick={() => handleClick(item.id)}>{transformName(item.url)}</a>
-              </li>
-            );
-          }
-        })}
-      </ul>
-      <Button className='nav_button'>Contact us</Button>
-    </nav>
+    <header>
+      <nav className='nav' aria-label='Main navigation menu'>
+        <ul>
+          {menuItems.map((item) => {
+            if (item.url === '/') {
+              return (
+                <li className='nav__logo'>
+                  <a href='/'>
+                    <img
+                      onClick={() => handleClick(item.id)}
+                      key={item.id}
+                      href='/'
+                      alt='Logo'
+                      src={logo}
+                      width='89'
+                      height='32'
+                    />
+                  </a>
+                </li>
+              );
+            } else {
+              return (
+                <li className='nav__item'>
+                  <a key={item.id} href={item.url} onClick={() => handleClick(item.id)}>{transformName(item.url)}</a>
+                </li>
+              );
+            }
+          })}
+        </ul>
+        <Button className='nav_button'>Contact us</Button>
+      </nav>
+    </header>
   );
 }
 
