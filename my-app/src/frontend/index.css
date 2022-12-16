@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'Inter-medium';
     src: url('../../fonts/Inter-Medium.woff2') format('woff2'),
@@ -36,8 +35,7 @@ body {
   border-bottom: 1px solid #F1F0F0;
   display: flex;
   justify-content: space-between;
-  margin: 25px 0px;
-  padding: 0px 65px;
+  padding: 25px 65px;
 }
 
 .nav ul {
@@ -66,17 +64,6 @@ body {
 
 .nav__item a:hover {
   color: #DAC2F2;
-}
-
-
-button {
-  background-color: #DAC2F2;
-  border: none;
-  border-radius: 24px;
-  width: 192px;
-  height: 48px;
-  font-size: 16px;
-  letter-spacing: 0.5px;
 }
 
 .hero {
@@ -128,4 +115,75 @@ button {
 .testimonial__caption {
   color: #989898;
   font-size: 24px;
+}
+
+.newsletter {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.newsletter__heading {
+  text-align: center;
+  font-family: 'Inter-medium',
+    monospace, sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.newsletter__form {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.newsletter__input {
+  background-color: #F1F0F0;
+  color: #231E1E;
+  border:none;
+  border-radius: 24px;
+  width: 400px;
+  height: 48px;
+  margin-right: 20px;
+  padding-left: 30px;
+  color:#231E1E;
+  font-size: 16px
+}
+
+.newsletter__input::placeholder {
+  color:#231E1E;
+  font-size: 16px;
+  padding-left: 25px;
+}
+
+.newsletter__input:focus {
+  outline: none;
+}
+
+button {
+  background-color: #DAC2F2;
+  border: none;
+  border-radius: 24px;
+  width: 192px;
+  height: 48px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.visually-hidden {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space:
 }

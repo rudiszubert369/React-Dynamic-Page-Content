@@ -17,16 +17,23 @@ function Newsletter() {
   }
 
   return (
-    <section className='newsletter' aria-label='Sign up for our newsletter'>
-      <form onSubmit={handleSubmit} className='newsletter__form'>
-        <label>
-          Type your email
-          <input name='email' type='email' className='newsletter__input' />
-        </label>
-        <Button type='submit'>Submit</Button>
-        {response && <p>{response.message}</p>}
-        {error && <p>Error: {error.message}</p>}
-      </form>
+    <section className='container' aria-label='Sign up for our newsletter'>
+      <div className='newsletter'>
+        <h3 className='newsletter__heading'>Sign up for our Newsletter</h3>
+        <form onSubmit={handleSubmit} className='newsletter__form'>
+          <label className="visually-hidden">Type your email</label>
+          <input
+            name='email'
+            type='email'
+            placeholder="Type your email"
+            className='newsletter__input'
+            aria-label='Newsletter email input'
+          />
+          <Button type='submit'>Submit</Button>
+        </form>
+        {response && <p style={{ color: '#5EDC4B', fontSize:'14px', textAlign:'center' }}>{response.message}</p>}
+        {error && <p style={{ color: 'red', fontSize:'14px', textAlign:'center' }}>Error: {error.message}</p>}
+      </div>
     </section>
   );
 }
