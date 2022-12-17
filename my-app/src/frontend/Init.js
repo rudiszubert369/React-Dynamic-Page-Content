@@ -13,8 +13,12 @@ function Init() {
   //initial fetch of all Pages
   useEffect(() => {
     async function fetchAndSetPages() {
-      const fetchedData = await fetchData();
-      setPages(fetchedData);
+      try {
+        const fetchedData = await fetchData();
+        setPages(fetchedData);
+      } catch (error) {
+        setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
+      }
     }
     fetchAndSetPages();
   }, []);
@@ -36,8 +40,12 @@ function Init() {
 
   function fetchAndSetSections() {
     async function fetchSections() {
-      const fetchedData = await fetchData(activeId);
-      setActiveSections(fetchedData.sections);
+      try {
+        const fetchedData = await fetchData(activeId);
+        setActiveSections(fetchedData.sections);
+      } catch (error) {
+        setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
+      }
     }
     fetchSections();
   }
