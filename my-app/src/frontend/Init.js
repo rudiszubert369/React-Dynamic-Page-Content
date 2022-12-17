@@ -12,6 +12,7 @@ function Init() {
   const url = location.pathname;
 
   //try to match url with url with api and makes call to get the content based on the id
+  //also change page id when the route changes
   useEffect(() => {
     const matchedUrl = pages ? pages.find(item => item.url === url) : null;
       if (matchedUrl && matchedUrl.id !== activeId) {
@@ -20,7 +21,7 @@ function Init() {
       // if (matchedUrl) {
       //   setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
       // }
-  }, [pages])
+  }, [pages, location])
 
   useEffect(() => {
     if (activeId) {

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
+import  AppContext  from './AppContext';
 import Button from './Button.js';
 import logo from '../assets/logo.svg';
-import  AppContext  from './AppContext';
 
 function Navigation(props) {
   const { pages, setActiveId } = useContext(AppContext);
