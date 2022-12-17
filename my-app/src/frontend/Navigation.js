@@ -10,6 +10,7 @@ function Navigation(props) {
     return str.substring(1, 2).toUpperCase() + str.substring(2);
   }
 
+  //lifts the id of clicked nav element to the parent component
   function handleClick(id) {
     props.onMenuClick(id);
   }

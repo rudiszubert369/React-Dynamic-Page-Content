@@ -1,4 +1,4 @@
-const Button = (props) => {
+function Button(props) {
 
   return (
     <button className='button-main' type={props.type}>

@@ -1,5 +1,5 @@
 import { usePostEmail } from '../backend/usePostEmail.js';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Button from './Button.js';
 
 function Newsletter() {
@@ -11,17 +11,6 @@ function Newsletter() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
 
-  function validateEmail(email) {
-    // basic email validation regex
-    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!emailRegex.test(email)) {
-      setEmailError('Please enter a valid email address.');
-      return false;
-    }
-    setEmailError('');
-    return true;
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     const isEmailValid = validateEmail(email);
@@ -29,6 +18,17 @@ function Newsletter() {
       postEmail({ email: email });
       setEmail('');
     }
+  }
+
+  // basic email validation
+  function validateEmail(email) {
+    const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailRegex.test(email)) {
+      setEmailError('Please enter a valid email address.');
+      return false;
+    }
+    setEmailError('');
+    return true;
   }
 
   return (

@@ -3,6 +3,10 @@ import quotationMark from '../assets/quotation-mark.svg';
 function Testimonial(props) {
   const { text, author } = props;
 
+  if (!text && !author) {
+      return null
+  }
+
   return (
     <section className='testimonial' aria-label='Customer testimonials'>
       <div className='container'>
