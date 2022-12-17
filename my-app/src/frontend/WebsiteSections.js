@@ -1,19 +1,11 @@
+import { useEffect } from 'react';
 import Newsletter from './Newsletter.js'
 import Hero from './Hero.js'
 import Testimonial from './Testimonial.js'
-import  AppContext  from './AppContext';
-import { useContext, useEffect } from 'react';
-
-
+import Navigation from './Navigation.js';
 
 function WebsiteSections(props) {
   const sections = props.sections;
-  const { pages, setPages, activeId, setActiveId, activeSections, setActiveSections, error, setError } = useContext(AppContext);
-
-  useEffect(() => {
-    console.log(pages);
-  }, [pages])
-
 
   if (!Array.isArray(sections)) {
     return null;
@@ -21,20 +13,23 @@ function WebsiteSections(props) {
 
   if (sections) {
     return (
-      <main>
-        {sections.map(section => {
-          switch (section.type) {
-            case 'hero':
-              return <Hero key={section.type} text={section.text} img={section.img} />;
-            case 'newsletter':
-              return <Newsletter key={section.type} />;
-            case 'testimonial':
-              return <Testimonial key={section.type} text={section.text} author={section.author} />;
-            default:
-              return null;
-          }
-        })}
-      </main>
+      <div>
+        <Navigation />
+        <main>
+          {sections.map(section => {
+            switch (section.type) {
+              case 'hero':
+                return <Hero key={section.type} text={section.text} img={section.img} />;
+              case 'newsletter':
+                return <Newsletter key={section.type} />;
+              case 'testimonial':
+                return <Testimonial key={section.type} text={section.text} author={section.author} />;
+              default:
+                return null;
+            }
+          })}
+        </main>
+      </div>
     );
   }
 }

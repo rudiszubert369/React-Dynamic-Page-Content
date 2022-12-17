@@ -1,21 +1,17 @@
 import Button from './Button.js';
 import logo from '../assets/logo.svg';
-
+import  AppContext  from './AppContext';
+import { useContext } from 'react';
 
 function Navigation(props) {
-  const menuItems = props.menuItems;
+  const { pages, setActiveId } = useContext(AppContext);
 
+  //edits url string to get a menu item name. Removes '/' from first character and capitalizes
   function transformName(str) {
-    //edits url string to get a menu item name. Removes '/' from first character and capitalizes
     return str.substring(1, 2).toUpperCase() + str.substring(2);
   }
 
-  //lifts the id of clicked nav element to the parent component
-  function handleClick(id) {
-    props.onMenuClick(id);
-  }
-
-  if (!menuItems) {
+  if (!pages) {
     return null
   }
 
@@ -23,26 +19,23 @@ function Navigation(props) {
     <header>
       <nav className='nav' aria-label='Main navigation menu'>
         <ul>
-          {menuItems.map((item) => {
+          {pages.map((item) => {
             if (item.url === '/') {
               return (
                 <li className='nav__logo' key={item.id}>
-                  <a href='/'>
-                    <img
-                      onClick={() => handleClick(item.id)}
-                      href='/'
-                      alt='Logo'
-                      src={logo}
-                      width='89'
-                      height='32'
-                    />
-                  </a>
+                  <img
+                    onClick={() => setActiveId(item.id)}
+                    alt='Logo'
+                    src={logo}
+                    width='89'
+                    height='32'
+                  />
                 </li>
               );
             } else {
               return (
                 <li className='nav__item' key={item.id}>
-                  <a href={item.url} onClick={() => handleClick(item.id)}>{transformName(item.url)}</a>
+                  <a  onClick={() => setActiveId(item.id)}>{transformName(item.url)}</a>
                 </li>
               );
             }

@@ -5,8 +5,8 @@ import AppContext  from './AppContext';
 function AppProvider({ children }) {
   const [pages, setPages] = useState(null);
   const [activeId, setActiveId] = useState(null);
-  const [activeSections, setActiveSections] = useState(null);
   const [error, setError] = useState(null);
+
 
   // fetch data and update state
   useEffect(() => {
@@ -26,10 +26,8 @@ function AppProvider({ children }) {
     setPages,
     activeId,
     setActiveId,
-    activeSections,
-    setActiveSections,
     error,
-    setError,
+    setError
   };
 
   return (

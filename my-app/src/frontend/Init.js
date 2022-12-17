@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react';
-import Navigation from './Navigation.js';
+import { useState, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom'
 import WebsiteSections from './WebsiteSections.js';
 import fetchData from '../backend/fetchData.js';
-import { useContext } from 'react';
 import  AppContext  from './AppContext';
-import {useLocation, Link} from 'react-router-dom'
-
 
 function Init() {
-  const { pages, setPages, activeId, setActiveId, activeSections, setActiveSections, error, setError } = useContext(AppContext);
+  const [activeSections, setActiveSections] = useState(null);
+  const { pages, activeId, setActiveId, error, setError } = useContext(AppContext);
 
   const location = useLocation();
   const url = location.pathname;
 
+  //try to match url with url with api and makes call to get the content based on the id
   useEffect(() => {
     if (pages) {
       const matchedUrl = pages.find(item => item.url === url);
@@ -26,6 +25,13 @@ function Init() {
     }
   }, [pages])
 
+  useEffect(() => {
+    if (activeId) {
+      fetchAndSetSections()
+    }
+  }, [activeId])
+
+  //fetches page content based on id
   function fetchAndSetSections() {
     async function fetchSections() {
       try {
@@ -38,14 +44,8 @@ function Init() {
     fetchSections();
   }
 
-  function handleMenuClick(id) {
-    setActiveId(id);
-    fetchAndSetSections();
-  }
-
   return (
     <div className='App'>
-      <Navigation onMenuClick={handleMenuClick} menuItems={pages} />
       {error ? error : <WebsiteSections sections={activeSections} />}
     </div>
   );

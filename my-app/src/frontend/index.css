@@ -51,6 +51,7 @@ body {
 
 .nav__logo {
   margin-top: -5px;
+  cursor: pointer;
 }
 
 .nav__item a {
@@ -60,6 +61,8 @@ body {
   transition: color 0.2s ease-in;
   font-family: 'Inter',
     monospace, sans-serif;
+  cursor: pointer;
+
 }
 
 .nav__item a:hover {
