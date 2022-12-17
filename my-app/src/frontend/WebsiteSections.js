@@ -1,9 +1,19 @@
 import Newsletter from './Newsletter.js'
 import Hero from './Hero.js'
 import Testimonial from './Testimonial.js'
+import  AppContext  from './AppContext';
+import { useContext, useEffect } from 'react';
+
+
 
 function WebsiteSections(props) {
   const sections = props.sections;
+  const { pages, setPages, activeId, setActiveId, activeSections, setActiveSections, error, setError } = useContext(AppContext);
+
+  useEffect(() => {
+    console.log(pages);
+  }, [pages])
+
 
   if (!Array.isArray(sections)) {
     return null;

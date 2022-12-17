@@ -2,31 +2,19 @@ import { useState, useEffect } from 'react';
 import Navigation from './Navigation.js';
 import WebsiteSections from './WebsiteSections.js';
 import fetchData from '../backend/fetchData.js';
+import { useContext } from 'react';
+import  AppContext  from './AppContext';
+import {useLocation, Link} from 'react-router-dom'
+
 
 function Init() {
-  const [pages, setPages] = useState(null);
-  const [activeId, setActiveId] = useState(null);
-  const [activeSections, setActiveSections] = useState(null);
-  const [error, setError] = useState(null);
+  const { pages, setPages, activeId, setActiveId, activeSections, setActiveSections, error, setError } = useContext(AppContext);
 
+  const location = useLocation();
+  const url = location.pathname;
 
-  //initial fetch of all Pages
-  useEffect(() => {
-    async function fetchAndSetPages() {
-      try {
-        const fetchedData = await fetchData();
-        setPages(fetchedData);
-      } catch (error) {
-        setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
-      }
-    }
-    fetchAndSetPages();
-  }, []);
-
-  //once the pages are fetched it matches url location with id in pages and fetches sections
   useEffect(() => {
     if (pages) {
-      const url = window.location.pathname;
       const matchedUrl = pages.find(item => item.url === url);
       if (matchedUrl) {
         setActiveId(matchedUrl.id);

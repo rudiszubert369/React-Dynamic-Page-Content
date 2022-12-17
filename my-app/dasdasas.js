@@ -1,3 +1,15 @@
+import Init from './Init.js';
+
+function App() {
+  return (
+    <div>
+      <Init />
+    </div>
+  );
+}
+
+export default App;
+
 import { useState, useEffect } from 'react';
 import Navigation from './Navigation.js';
 import WebsiteSections from './WebsiteSections.js';
