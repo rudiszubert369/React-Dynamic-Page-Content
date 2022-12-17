@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import Button from './Button.js';
 import logo from '../assets/logo.svg';
 import  AppContext  from './AppContext';
-import { useContext } from 'react';
 
 function Navigation(props) {
   const { pages, setActiveId } = useContext(AppContext);
@@ -22,20 +23,21 @@ function Navigation(props) {
           {pages.map((item) => {
             if (item.url === '/') {
               return (
-                <li className='nav__logo' key={item.id}>
-                  <img
-                    onClick={() => setActiveId(item.id)}
-                    alt='Logo'
-                    src={logo}
-                    width='89'
-                    height='32'
-                  />
+                <li className='nav__logo' key={item.id} onClick={() => setActiveId(item.id)}>
+                  <Link to={item.url}>
+                    <img
+                      alt='Logo'
+                      src={logo}
+                      width='89'
+                      height='32'
+                    />
+                  </Link>
                 </li>
               );
             } else {
               return (
-                <li className='nav__item' key={item.id}>
-                  <a  onClick={() => setActiveId(item.id)}>{transformName(item.url)}</a>
+                <li className='nav__item' key={item.id} onClick={() => setActiveId(item.id)}>
+                  <Link to={item.url}>{transformName(item.url)}</Link>
                 </li>
               );
             }
@@ -48,3 +50,4 @@ function Navigation(props) {
 }
 
 export default Navigation
+

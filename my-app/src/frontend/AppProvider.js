@@ -10,21 +10,21 @@ function AppProvider({ children }) {
 
   // fetch data and update state
   useEffect(() => {
-    async function fetchAndSetPages() {
-      console.log('setpages');
-      try {
-        const fetchedData = await fetchData();
-        setPages(fetchedData);
-      } catch (error) {
-        setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
-      }
-    }
     fetchAndSetPages();
   }, []);
 
+  async function fetchAndSetPages() {
+    console.log('setpages');
+    try {
+      const fetchedData = await fetchData();
+      setPages(fetchedData);
+    } catch (error) {
+      setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
+    }
+  }
+
   const value = {
     pages,
-    setPages,
     activeId,
     setActiveId,
     error,
