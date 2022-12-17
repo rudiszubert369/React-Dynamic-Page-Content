@@ -4,7 +4,7 @@ import Hero from './Hero.js'
 import Testimonial from './Testimonial.js'
 import Navigation from './Navigation.js';
 
-function WebsiteSections(props) {
+function WebsiteContent(props) {
   const sections = props.sections;
 
   if (!Array.isArray(sections)) {
@@ -34,4 +34,4 @@ function WebsiteSections(props) {
   }
 }
 
-export default WebsiteSections
+export default WebsiteContent;

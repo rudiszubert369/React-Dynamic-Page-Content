@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { useLocation } from 'react-router-dom'
-import WebsiteSections from './WebsiteSections.js';
+import WebsiteContent from './WebsiteContent.js';
 import fetchData from '../backend/fetchData.js';
 import  AppContext  from './AppContext';
 
@@ -12,15 +12,15 @@ function Init() {
   const url = location.pathname;
 
   //try to match url with url with api and makes call to get the content based on the id
-  //also change page id when the route changes
+  //also change page id when the route changes(for example user clicks back button)
   useEffect(() => {
     const matchedUrl = pages ? pages.find(item => item.url === url) : null;
       if (matchedUrl && matchedUrl.id !== activeId) {
-        setActiveId(matchedUrl.id)
+        setActiveId(matchedUrl.id);
       }
-      // if (matchedUrl) {
-      //   setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
-      // }
+      if (!matchedUrl && pages) {//handle error if pages are fetched and current url is not found
+        setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
+      }
   }, [pages, location])
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function Init() {
 
   return (
     <div className='App'>
-      {error ? error : <WebsiteSections sections={activeSections} />}
+      {error ? error : <WebsiteContent sections={activeSections} />}
     </div>
   );
 }
