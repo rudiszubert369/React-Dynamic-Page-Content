@@ -11,6 +11,7 @@ function AppProvider({ children }) {
   // fetch data and update state
   useEffect(() => {
     async function fetchAndSetPages() {
+      console.log('setpages');
       try {
         const fetchedData = await fetchData();
         setPages(fetchedData);

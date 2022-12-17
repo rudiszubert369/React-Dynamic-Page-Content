@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { useLocation } from 'react-router-dom'
 import WebsiteSections from './WebsiteSections.js';
 import fetchData from '../backend/fetchData.js';
@@ -13,16 +13,13 @@ function Init() {
 
   //try to match url with url with api and makes call to get the content based on the id
   useEffect(() => {
-    if (pages) {
-      const matchedUrl = pages.find(item => item.url === url);
-      if (matchedUrl) {
-        setActiveId(matchedUrl.id);
-        fetchAndSetSections();
-      } else {
-        //error handling if url doesn't match api
-        setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
+    const matchedUrl = pages ? pages.find(item => item.url === url) : null;
+      if (matchedUrl && matchedUrl.id !== activeId) {
+        setActiveId(matchedUrl.id)
       }
-    }
+      // if (matchedUrl) {
+      //   setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
+      // }
   }, [pages])
 
   useEffect(() => {
