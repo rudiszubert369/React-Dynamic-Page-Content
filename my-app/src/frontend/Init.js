@@ -18,29 +18,28 @@ function Init() {
       if (matchedUrl && matchedUrl.id !== activeId) {
         setActiveId(matchedUrl.id);
       }
-      if (!matchedUrl && pages) {//handle error if pages are fetched and current url is not found
+      if (!matchedUrl && pages) { //handle error if pages are fetched and current url is not found
         setError(<h1 style={{ textAlign: 'center' }}>404</h1>);
       }
   }, [pages, location])
 
+
+  //fetches and sets website content on activeId state change
   useEffect(() => {
     if (activeId) {
-      fetchAndSetSections()
+      fetchAndSetSections();
     }
   }, [activeId])
 
-  //fetches page content based on id
-  function fetchAndSetSections() {
-    async function fetchSections() {
-      try {
-        const fetchedData = await fetchData(activeId);
-        setActiveSections(fetchedData.sections);
-      } catch (error) {
-        setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
-      }
+  async function fetchAndSetSections() {
+    try {
+      const fetchedData = await fetchData(activeId);
+      setActiveSections(fetchedData.sections);
+    } catch (error) {
+      setError(<h1 style={{ textAlign: 'center' }}>Error loading data</h1>);
     }
-    fetchSections();
   }
+
 
   return (
     <div className='App'>
