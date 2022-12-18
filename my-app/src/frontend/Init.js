@@ -2,7 +2,9 @@ import { useState, useEffect, useContext, useCallback } from 'react';
 import { useLocation } from 'react-router-dom'
 import WebsiteContent from './WebsiteContent.js';
 import fetchData from '../backend/fetchData.js';
-import  AppContext  from './AppContext';
+import  AppContext  from './AppContext.js';
+import  Error from './Error';
+
 
 function Init() {
   const [activeSections, setActiveSections] = useState(null);
@@ -43,7 +45,7 @@ function Init() {
 
   return (
     <div className='App'>
-      {error ? error : <WebsiteContent sections={activeSections} />}
+      {error ? <Error /> : <WebsiteContent sections={activeSections} />}
     </div>
   );
 }
