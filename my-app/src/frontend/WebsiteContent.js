@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Newsletter from './Newsletter.js'
 import Hero from './Hero.js'
 import Testimonial from './Testimonial.js'

@@ -1,6 +1,5 @@
-import  AppContext  from './AppContext';
 import { useContext } from 'react';
-
+import  AppContext  from './AppContext.js';
 
 function Error() {
   const { error } = useContext(AppContext);

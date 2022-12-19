@@ -1,5 +1,5 @@
-import { usePostEmail } from '../backend/usePostEmail.js';
 import { useState } from 'react';
+import { usePostEmail } from '../backend/usePostEmail.js';
 import Button from './Button.js';
 
 function Newsletter() {

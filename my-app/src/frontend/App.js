@@ -1,6 +1,6 @@
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Init from './Init.js';
-import AppContext  from './AppContext';
+import AppContext  from './AppContext.js';
 import fetchData from '../backend/fetchData.js';
 import { useState, useEffect } from 'react';
 
@@ -35,9 +35,11 @@ function App() {
 
   return (
     <AppContext.Provider value={value}>
-      <BrowserRouter>
-        <Init />
-      </BrowserRouter>
+      <Router>
+        <Routes>
+          <Route path="*" element={<Init />} />
+        </Routes>
+      </Router>
     </AppContext.Provider>
   );
 }

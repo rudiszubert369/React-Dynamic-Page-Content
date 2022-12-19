@@ -1,4 +1,4 @@
-function Hero(props) {
+function Hero (props) {
   const { text, img } = props;
 
     return (
@@ -8,7 +8,7 @@ function Hero(props) {
             <h3 className='hero__title'>{text}</h3>
           </div>
           <div className='hero__image__column'>
-            <img src={img} alt='Hero image' className='hero__img'/>
+            <img src={img} alt='Hero' className='hero__img'/>
           </div>
         </div>
       </section>
